@@ -17,7 +17,7 @@ module ReadingTime
   def count_words(html)
     use_thai_nlp = config.fetch('thai_nlp', false)
     if use_thai_nlp
-      tokenize_words(html)
+      tokenize_words(words(html).join(' '))
     else
       words(html).length
     end
@@ -47,9 +47,8 @@ module ReadingTime
     texts
   end
 
-  def tokenize_words(html)
-    fragment = Nokogiri::HTML.fragment html
-    cmd = `python word_tokenizer.py "#{text_nodes(fragment)}"`
+  def tokenize_words(text)
+    cmd = `python word_tokenizer.py "#{text}"`
     cmd.to_i
   end
 
