@@ -24,7 +24,7 @@ module ReadingTime
   end
 
   def reading_time(html)
-    reading_speed = config.fetch('reading_speed', 270)
+    reading_speed = config.fetch('reading_speed', 270).to_f
     (count_words(html) / reading_speed).ceil
   end
 
