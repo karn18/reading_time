@@ -48,7 +48,7 @@ module ReadingTime
   end
 
   def tokenize_words(text)
-    cmd = `python word_tokenizer.py "#{text}"`
+    cmd = `python3 word_tokenizer.py "#{text}"`
     cmd.to_i
   end
 
